@@ -4,6 +4,7 @@
     "description": "Openshift Deployment Node.js  Express Next js and MySQL",
     "main": "server.js",
     "scripts": {
+        "start": "node server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -24,5 +25,9 @@
         "nodemailer": "^6.6.1",
         "randomatic": "^3.1.1",
         "winston": "^3.3.3"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GovindCoding/openshift-demo.git"
+      }
 }
