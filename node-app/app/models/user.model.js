@@ -25,7 +25,7 @@ User.create = (newUser, result) => {
             result(err, null);
             return;
         }
-        logger.error(SERVICE_FILE_NAME + SERVICE_NAME + "created user: ", { id: res.insertId, ...newUser });
+        logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "created user: ", { id: res.insertId, ...newUser });
         result(null, { id: res.insertId, ...newUser });
     });
 };
@@ -40,7 +40,7 @@ User.getUserById = (userId, result) => {
             return;
         }
         if (res.length) {
-            logger.error(SERVICE_FILE_NAME + SERVICE_NAME + "found user: ", res[0]);
+            logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "found user: ", res[0]);
             result(null, res[0]);
             return;
         }

@@ -22,7 +22,7 @@ exports.login = (req, res) => {
         // Save User in the database
         User.login(new User(reqObj), (err, user) => {
             if (err) {
-                logger.error(SERVICE_FILE_NAME + SERVICE_NAME + "Some error occurred while login user! Error:" + error);
+                logger.error(SERVICE_FILE_NAME + SERVICE_NAME + "Some error occurred while login user! Error:" + err);
                 return APIResponse.errorResponse(res, "Some error occurred while creating the User!", "USRE002");
             } else {
                 delete user.password;
@@ -81,6 +81,7 @@ exports.saveUser = (req, res) => {
     const reqObj = req.body;
     try {
         logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "Entering into saveUser().");
+        reqObj.status = constants.STATUS_ACTIVE;
         reqObj.accountStatus = constants.EMAIL_SENT;
         reqObj.otp = randomize('0', 6).toString();
         reqObj.createdOn = new Date();
@@ -90,7 +91,9 @@ exports.saveUser = (req, res) => {
                 logger.error(SERVICE_FILE_NAME + SERVICE_NAME + "Some error occurred while creating the User! Error:" + err);
                 return APIResponse.errorResponse(res, "Some error occurred while creating the User!", "USRE002");
             } else {
-                this.sendEmail(res, data);
+                this.sendEmail(res, data.email, data.otp);
+                delete data.otp;
+                delete data.password;
                 logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "User saved successfully!");
                 return APIResponse.successResponseWithData(res, "User saved successfully!", data, "USRS001");
             }
@@ -205,7 +208,7 @@ exports.deleteAll = (req, res) => {
     }
 };
 
-exports.sendEmail = async(res, user) => {
+exports.sendEmail = async(res, email, otp) => {
     const SERVICE_NAME = "sendEmail() :: ";
     try {
         logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "Entering into send email.");
@@ -219,9 +222,9 @@ exports.sendEmail = async(res, user) => {
                         logger.info(SERVICE_FILE_NAME + SERVICE_NAME + "Error retrieving User with id. Error:" + JSON.stringify(err));
                         return APIResponse.errorResponse(res, "Error retrieving User with id " + req.params.userId, "USRE005");
                     } else {
-                        emailTemplate.email = user.email;
+                        emailTemplate.email = email;
                         let emailContent = emailTemplate.email_content;
-                        emailContent = emailContent.replace("{{OTP}}", user.otp);
+                        emailContent = emailContent.replace("{{OTP}}", otp);
                         emailTemplate.emailContent = emailContent;
                         const emailDoc = {
                             emailSetup: emailSetup,
