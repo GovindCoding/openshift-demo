@@ -1,0 +1,4 @@
+**/node_modules/
+npm-debug.log
+app/logs/
+app/node_modules/

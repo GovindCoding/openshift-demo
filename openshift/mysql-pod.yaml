@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pod
+  labels:
+    name: mysql-pod
+    app: openshift-demo-app
+spec:
+  containers:
+    - name: mysql
+      image: mysql
+      ports:
+        - containerPort: 3306
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: Anka@1234
+        - name: MYSQL_USER
+          value: db_user
+        - name: MYSQL_PASSWORD
+          value: Anka@1234 
+        - name: MYSQL_DATABASE
+          value: node_app

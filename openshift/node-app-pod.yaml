@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-app-pod
+  labels:
+    name: node-app-pod
+    app: openshift-demo-app
+spec:
+  containers:
+    - name: node-app
+      image: node-app
+      ports:
+        - containerPort: 3003
+

@@ -1,0 +1,30 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: example
+  namespace: govind-ekshinge-dev
+spec:
+  selector:
+    app: hello-openshift
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-openshift
+    spec:
+      triggers:
+        image.openshift.io/triggers: |-
+          [
+            {
+              "from": {
+                "kind": "ImageStreamTag",
+                "name": "openshift/hello-openshift:latest"
+              },
+              "fieldPath": "spec.template.spec.containers[0].image"
+            }
+          ]
+      containers:
+        - name: hello-openshift
+          image: openshift/hello-openshift
+          ports:
+            - containerPort: 8080

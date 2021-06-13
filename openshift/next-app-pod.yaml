@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: next-app-pod
+  labels:
+    name: next-app-pod
+    app: openshift-demo-app
+spec:
+  containers:
+    - name: next-app
+      image: next-app
+      ports:
+        - containerPort: 3000

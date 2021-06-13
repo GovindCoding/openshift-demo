@@ -1,0 +1,29 @@
+{
+    "name": "node-app",
+    "version": "1.0.0",
+    "description": "Openshift Deployment Node.js  Express Next js and MySQL",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "mysql",
+        "restapi"
+    ],
+    "author": "Anka",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "expressjs-field-validator": "^2.2.1",
+        "jsonwebtoken": "^8.5.1",
+        "mysql": "^2.17.1",
+        "nodemailer": "^6.6.1",
+        "randomatic": "^3.1.1",
+        "winston": "^3.3.3"
+    }
+}

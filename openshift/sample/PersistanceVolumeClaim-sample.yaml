@@ -1,0 +1,82 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    pv.kubernetes.io/bind-completed: 'yes'
+    pv.kubernetes.io/bound-by-controller: 'yes'
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
+    volume.kubernetes.io/selected-node: ip-10-0-213-225.us-east-2.compute.internal
+  selfLink: /api/v1/namespaces/govind-ekshinge-dev/persistentvolumeclaims/mysql-test
+  resourceVersion: '91888715'
+  name: mysql-test
+  uid: 5867076d-eb66-4c2e-acd1-7d28287f84c0
+  creationTimestamp: '2021-06-05T09:52:22Z'
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2021-06-05T09:52:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:template': {}
+            'f:template.openshift.io/template-instance-owner': {}
+        'f:spec':
+          'f:accessModes': {}
+          'f:resources':
+            'f:requests':
+              .: {}
+              'f:storage': {}
+          'f:volumeMode': {}
+    - manager: kube-scheduler
+      operation: Update
+      apiVersion: v1
+      time: '2021-06-05T09:52:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:volume.kubernetes.io/selected-node': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2021-06-05T09:52:32Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:pv.kubernetes.io/bind-completed': {}
+            'f:pv.kubernetes.io/bound-by-controller': {}
+            'f:volume.beta.kubernetes.io/storage-provisioner': {}
+        'f:spec':
+          'f:volumeName': {}
+        'f:status':
+          'f:accessModes': {}
+          'f:capacity':
+            .: {}
+            'f:storage': {}
+          'f:phase': {}
+  namespace: govind-ekshinge-dev
+  finalizers:
+    - kubernetes.io/pvc-protection
+  labels:
+    template: mysql-persistent-template
+    template.openshift.io/template-instance-owner: b450c0e3-4300-46ea-a55c-d2d790160e81
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pvc-5867076d-eb66-4c2e-acd1-7d28287f84c0
+  storageClassName: gp2
+  volumeMode: Filesystem
+status:
+  phase: Bound
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi

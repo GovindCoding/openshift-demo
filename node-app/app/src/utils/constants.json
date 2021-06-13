@@ -1,0 +1,25 @@
+{
+    "SECRET_KEY": "21d123763dewewq43242dfgasiweyr78e30f14f",
+    "ZERO": 0,
+    "ONE": 1,
+    "TWO": 2,
+    "THREE": 3,
+    "FOUR": 4,
+    "FIVE": 5,
+    "SIX": 6,
+    "SEVEN": 7,
+    "EIGHT": 8,
+    "NINE": 9,
+    "TEN": 10,
+    "THIRTY": 30,
+    "THIRTY_TWO": 32,
+    "HUNDRED": 100,
+    "STATUS_ACTIVE": "active",
+    "STATUS_INACTIVE": "inactive",
+    "STATUS_DELETED": "deleted",
+    "STATUS_TRUE": true,
+    "STATUS_FALSE": false,
+    "EMAIL_SENT": "emailSent",
+    "EMAIL_VERIFIED": "emailVerified"
+
+}

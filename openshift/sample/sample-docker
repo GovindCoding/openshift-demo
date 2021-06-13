@@ -1,0 +1,13 @@
+Build Docker
+docker build -t knowtify-api:v1 .
+
+Run
+docker run -p 5000:5000 knowtify-api:v1
+
+
+
+brew install --force minishift
+
+Start Your cluster
+
+minikube start

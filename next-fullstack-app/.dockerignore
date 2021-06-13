@@ -1,0 +1,4 @@
+**/Next app
+app/.next/
+**/node_modules/
+app/node_modules/
